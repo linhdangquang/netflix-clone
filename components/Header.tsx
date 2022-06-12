@@ -1,12 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BellIcon, SearchIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handlerScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handlerScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handlerScroll);
+    };
+  }, []);
+
   return (
-    <header>
+    <header className={`${isScrolled && "bg-[#141414]"}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
           src="https://res.cloudinary.com/linh-asm/image/upload/v1654265063/netflix/Netflix_2015_logo_qyy4ox.svg"
