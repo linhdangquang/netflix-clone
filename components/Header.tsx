@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import { BellIcon, SearchIcon } from "@heroicons/react/outline";
+import {  SearchIcon } from "@heroicons/react/outline";
+import {BellIcon} from '@heroicons/react/solid';
 import Link from "next/link";
 
 const Header = () => {
@@ -42,7 +43,7 @@ const Header = () => {
       <div className="flex items-center space-x-4 text-sm font-light">
         <SearchIcon className="hidden h-6 w-6 sm:inline" />
         <div className="hidden lg:inline">Kids</div>
-        <BellIcon className="h-6 w-6" />
+        <BellIcon  className="h-6 w-6" />
         <Link href={"account"}>
           <img
             src="https://res.cloudinary.com/linh-asm/image/upload/v1654272771/netflix/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo_ccdvsr.png"
