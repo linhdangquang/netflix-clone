@@ -18,7 +18,6 @@ const Banner = ({ netflixOriginals }: Props) => {
     );
   }, [netflixOriginals]);
 
-  console.log(movie);
 
   return (
     <div className="flex flex-col space-y-2 py-24 lg:pb-12 md:space-x-4 lg:justify-end ">

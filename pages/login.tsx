@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import useAuth from "../hooks/useAuth";
 
 interface Inputs {
   email: string;
@@ -19,22 +20,26 @@ const loginSchema = yup.object().shape({
   password: yup
     .string()
     .required("Password is required.")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-    ),
+    .min(8, "Password must be at least 8 characters."),
 });
 
 const Login = () => {
   const [login, setLogin] = useState(false);
-
+  const {signIn, signUp, error} = useAuth()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({ resolver: yupResolver(loginSchema) });
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {};
+  const onSubmit: SubmitHandler<Inputs> = async ({email, password}) => {
+    if(login) {
+      await signIn(email, password);
+
+    }else{
+      await signUp(email, password);
+    }
+  };
 
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
@@ -97,6 +102,12 @@ const Login = () => {
         >
           Sign In
         </button>
+
+        <div>
+          {
+            error && <p className="p-1 text-[13px] font-light text-orange-500">{error}</p>
+          }
+        </div>
 
         <div className="text-[gray]">
           New to Netflix?{" "}
