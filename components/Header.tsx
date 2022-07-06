@@ -46,14 +46,13 @@ const Header = () => {
         <SearchIcon className="hidden h-6 w-6 sm:inline" />
         <div className="hidden lg:inline">Kids</div>
         <BellIcon className="h-6 w-6" /> 
-        {/* <Link href={"account"}> */}
+        <Link href={"account"}>
         <img
-          onClick={() => logout()}
           src="https://res.cloudinary.com/linh-asm/image/upload/v1654272771/netflix/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo_ccdvsr.png"
           alt=""
           className="cursor-pointer rounded"
         />
-        {/* </Link> */}
+        </Link>
       </div>
     </header>
   );

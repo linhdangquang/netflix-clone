@@ -10,6 +10,7 @@ import Modal from "../components/Modal";
 import Plans from "../components/Plans";
 import Row from "../components/Row";
 import useAuth from "../hooks/useAuth";
+import useSubscription from "../hooks/useSubscription";
 import payments from "../lib/stripe";
 import { Movie } from "../typings";
 import requests from "../utils/requests";
@@ -37,10 +38,10 @@ const Home = ({
   documentaries,
   products,
 }: Props) => {
-  const { loading, logout } = useAuth();
+  const { loading, user } = useAuth();
   const showModal = useRecoilValue(modalState);
-  const subscription = false;
-
+  const subscription = useSubscription(user);
+  console.log(subscription);
   if (loading || subscription === null) return null;
 
   if (!subscription) return <Plans products={products} />;
@@ -49,7 +50,7 @@ const Home = ({
     <div className="relative h-screen bg-gradient-to-b  lg:h-[140vh]">
       <Head>
         <title>Netflix</title>
-        <meta name="description" content="This is a demo" />
+        <meta name="description" content="This is a demo meta tag" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
