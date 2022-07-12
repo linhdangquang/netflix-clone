@@ -53,6 +53,7 @@ const Home = ({
       <Head>
         <title>Netflix</title>
         <meta name="description" content="This is a demo meta tag" />
+        <meta name="google-site-verification" content="sWOw23ks8f4uXN7ohPW6OxK-qf_umdVEGSBUiARjGnM" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
