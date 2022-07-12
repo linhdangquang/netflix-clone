@@ -2,6 +2,7 @@ import { getProducts, Product } from "@stripe/firestore-stripe-payments";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Script from "next/script";
 import { useRecoilValue } from "recoil";
 import { modalState, movieState } from "../atoms/modalAtom";
 import Banner from "../components/Banner";
@@ -56,6 +57,17 @@ const Home = ({
         <meta name="google-site-verification" content="sWOw23ks8f4uXN7ohPW6OxK-qf_umdVEGSBUiARjGnM" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-XXXXX-Y', 'auto');
+          ga('send', 'pageview');
+        `}
+      </Script>
       <Header />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         <Banner netflixOriginals={netflixOriginals} />
